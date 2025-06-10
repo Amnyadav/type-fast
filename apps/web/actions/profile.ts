@@ -29,7 +29,7 @@ export const getProfileData = async () => {
     const testsCompleted = tests.length;
     const averageWpm = testsCompleted
       ? Math.round(
-          tests.reduce((sum, test) => sum + test.wpm, 0) / testsCompleted
+          tests.reduce((sum:number, test) => sum + test.wpm, 0) / testsCompleted
         )
       : 0;
     const averageAccuracy = testsCompleted
