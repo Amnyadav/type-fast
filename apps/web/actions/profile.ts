@@ -35,7 +35,7 @@ export const getProfileData = async () => {
     const averageAccuracy = testsCompleted
       ? Number(
           (
-            tests.reduce((sum, test) => sum + test.accuracy, 0) / testsCompleted
+            tests.reduce((sum:number, test) => sum + test.accuracy, 0) / testsCompleted
           ).toFixed(1)
         )
       : 0;
