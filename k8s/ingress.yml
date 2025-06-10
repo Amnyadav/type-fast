@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: typefast-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - typefast.club
+      secretName: typefast-cert-tls
+    - hosts:
+        - ws.typefast.club
+      secretName: typefast-ws-cert-tls
+  rules:
+    - host: typefast.club
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: typefast-web
+                port:
+                  number: 80
+    - host: ws.typefast.club
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: typefast-ws
+                port:
+                  number: 80
