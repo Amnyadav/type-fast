@@ -3,6 +3,7 @@
 import { auth } from "@/auth";
 import prisma from "@repo/db/client";
 import { getUserByEmail } from "@/db/user";
+import {Test} from "@prisma/client"
 import {
   calculateTotalTypingTime,
   getAllTimeBestScores,
@@ -20,22 +21,21 @@ export const getProfileData = async () => {
     if (!user) {
       throw new Error("User not found");
     }
-
-    const tests = await prisma.test.findMany({
+    const tests:Test [] = await prisma.test.findMany({
       where: { userId: user.id },
       orderBy: { createdAt: "desc" },
-    });
-
+    }) ;
+    console.log(tests)
     const testsCompleted = tests.length;
     const averageWpm:number = testsCompleted
       ? Math.round(
-          tests.reduce<number>((sum, test) => sum + test.wpm, 0) / testsCompleted
+          tests.reduce((sum, test) => sum + (test.wpm??0), 0) / testsCompleted
         )
       : 0;
     const averageAccuracy:number = testsCompleted
       ? Number(
           (
-            tests.reduce<number>((sum, test) => sum + test.accuracy, 0) / testsCompleted
+            tests.reduce((sum, test) => sum + (test.accuracy??0), 0) / testsCompleted
           ).toFixed(1)
         )
       : 0;
