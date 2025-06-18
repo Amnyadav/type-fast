@@ -29,7 +29,7 @@ A modern, minimalist typing speed test application built with Next.js.
 - [Resend](https://resend.com/) – Emails
 - [Docker](https://www.docker.com/) – Containerization
 - [PostgreSQL](https://neon.tech/) – Database
-- [Kubernetes](https://kubernetes.io/) Deployments
+
 
 ## Getting Started 🌟
 
