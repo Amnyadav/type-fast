@@ -27,7 +27,6 @@ A modern, minimalist typing speed test application built with Next.js.
 - [Turborepo](https://turbo.build/repo) – Monorepo
 - [Zustand](https://zustand-demo.pmnd.rs/) – State Management
 - [Resend](https://resend.com/) – Emails
-- [Docker](https://www.docker.com/) – Containerization
 - [PostgreSQL](https://neon.tech/) – Database
 
 
